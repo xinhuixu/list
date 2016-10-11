@@ -12,7 +12,7 @@ void print_list( struct node *n ){
   printf("\n");
 }
 
-struct node* insert_front(int j, struct node *n){
+struct node *insert_front(int j, struct node *n){
   struct node *head = (struct node *)malloc(sizeof(struct node));
   head->i = j;
   head->next = n;
@@ -23,7 +23,7 @@ struct node* free_list(struct node *n) {
   if (n->next)
     free_list(n->next);
   free(n);
-  return n; // NULL
+  return NULL;
 }
 
 int main(){
@@ -42,6 +42,7 @@ int main(){
   printf("free_list(hoo)\n");  
   //print_list(free_list(hoo)); //  segmentation fault
   free_list(hoo);
-  printf("print_list(hoo); => seg fault\n");
+  printf("print_list(hoo): seg fault\n");
+  //print_list(hoo);
   return 0;
 }
